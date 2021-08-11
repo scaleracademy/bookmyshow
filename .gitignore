@@ -1,0 +1,9 @@
+# java build stuff
+target/
+
+# IDE config
+.idea/
+
+# Macos
+**/.DS_Store
+
