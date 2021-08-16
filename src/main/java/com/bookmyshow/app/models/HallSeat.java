@@ -8,5 +8,5 @@ import lombok.Setter;
 public class HallSeat extends Auditable {
     private String seatLocation;
     private String seatType;
-    private boolean isUnderMaintainace;
+    private boolean isUnderMaintenance;
 }
