@@ -7,11 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class CustomerProfile extends Auditable {
-    private String fullName;
-    private String phone;
-    private String city;
-    private String email;
+public class Admin extends Auditable {
+    private String designation;
+    private String phone1, phone2, phone3;
+    private Long numberOfYearsInTheCompany;
 
     private User user; // this profile belongs to this user
 }

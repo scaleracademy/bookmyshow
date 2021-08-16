@@ -18,14 +18,6 @@ public class User extends Auditable {
     // authorization
     private Set<Role> roles;
 
-    @Override
-    public User clone() {
-        User obj = new User();
-        obj.username = this.username;
-        // make a perfect copy
-        return obj;
-    }
-
 
     public void setUsername(String username) {
         // validate

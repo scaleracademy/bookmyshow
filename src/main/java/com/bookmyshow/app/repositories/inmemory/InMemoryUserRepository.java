@@ -39,7 +39,7 @@ public class InMemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByUsername(String username) {
+    public Optional<User> findUserByUsername(String username) {
         return Optional.empty();
     }
 }
