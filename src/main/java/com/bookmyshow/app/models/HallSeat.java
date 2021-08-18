@@ -9,4 +9,5 @@ public class HallSeat extends Auditable {
     private String seatLocation;
     private String seatType;
     private boolean isUnderMaintenance;
+    private Hall hall;
 }

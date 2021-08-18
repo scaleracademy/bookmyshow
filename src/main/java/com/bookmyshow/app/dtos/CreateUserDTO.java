@@ -1,10 +1,12 @@
 package com.bookmyshow.app.dtos;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NonNull;
 
-@Data @AllArgsConstructor
-public class AdminRegistrationDTO {
+@Data
+public class CreateUserDTO {
+    @NonNull
     private String username;
+    @NonNull
     private String password;
 }

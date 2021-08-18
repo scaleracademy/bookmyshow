@@ -16,5 +16,5 @@ public interface AbstractRepository<Entity, IdType> {
 
     void delete(Entity movie); // Delete
 
-    List<Movie> findAll();
+    List<Entity> findAll();
 }

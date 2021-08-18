@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Cinema extends Auditable {
+public class Cinema extends Exposed {
     private String name;
     private String address;
 }

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Movie extends Auditable {
+public class Movie extends Exposed {
     private String name;
     private Integer durationMinutes;
 }

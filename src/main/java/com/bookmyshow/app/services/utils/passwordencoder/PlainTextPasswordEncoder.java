@@ -1,4 +1,4 @@
-package com.bookmyshow.app.service.utils.passwordencoder;
+package com.bookmyshow.app.services.utils.passwordencoder;
 
 public class PlainTextPasswordEncoder implements PasswordEncoder {
     @Override

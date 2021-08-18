@@ -11,7 +11,6 @@ public class AdminUsecases {
     }
 
     public void deleteAdmin(Admin admin) {
-
     }
 
     public Admin updateAdmin(Admin admin, UpdateAdminDTO details) {

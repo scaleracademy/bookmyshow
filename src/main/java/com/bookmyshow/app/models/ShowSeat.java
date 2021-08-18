@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ShowSeat extends Auditable {
+public class ShowSeat extends Exposed {
     private HallSeat hallSeat;
     private Show show;
+    private boolean occupied;
 }

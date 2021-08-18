@@ -2,7 +2,7 @@ package com.bookmyshow.app.models;
 
 import com.bookmyshow.app.exceptions.validation.InvalidUsernameException;
 import com.bookmyshow.app.exceptions.validation.PasswordTooSimpleException;
-import com.bookmyshow.app.service.utils.passwordencoder.PasswordEncoder;
+import com.bookmyshow.app.services.utils.passwordencoder.PasswordEncoder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,20 +15,24 @@ public class User extends Auditable {
     private String username;
     private String hashedSaltedPassword;
 
+    public User(String username) {
+        this.username = username;
+    }
+
     // authorization
     private Set<Role> roles;
 
 
     public void setUsername(String username) {
         // validate
-        if(username.length() < 2) {
+        if (username.length() < 2) {
             throw new InvalidUsernameException("Must have atleast 3 letters");
         }
         this.username = username;
     }
 
     public void setPassword(String password, PasswordEncoder passwordEncoder) {
-        if(password.length() < 8) {
+        if (password.length() < 8) {
             throw new PasswordTooSimpleException("must have atleast 8 characters");
         }
         String salt = "salt"; // from some service
@@ -44,6 +48,10 @@ public class User extends Auditable {
         // password-encoder is a dependency that we need
         String encoded = passwordEncoder.encode(password + salt) + salt;
         return encoded.equals(this.getHashedSaltedPassword());
+    }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 }
 

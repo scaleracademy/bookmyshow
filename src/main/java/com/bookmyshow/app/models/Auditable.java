@@ -8,10 +8,11 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public abstract class Auditable implements Cloneable  {
-    private Long id;
+public abstract class Auditable implements Cloneable {
+    private Long id; // database id
     private Date created;
     private Date updated;
+    private boolean deleted;
 
     @Override
     public boolean equals(Object o) {

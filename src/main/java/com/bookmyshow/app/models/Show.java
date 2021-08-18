@@ -7,9 +7,14 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class Show extends Auditable {
+public class Show extends Exposed {
     private Date startTime; // include Timezone
     private Date endTime;
     private Movie movie;
     private Hall hall;
+    private boolean cancelled;
+
+    public boolean isShowPending() {
+        return !cancelled && endTime.after(new Date());
+    }
 }
