@@ -4,24 +4,32 @@ import com.bookmyshow.app.exceptions.validation.InvalidUsernameException;
 import com.bookmyshow.app.exceptions.validation.PasswordTooSimpleException;
 import com.bookmyshow.app.services.utils.passwordencoder.PasswordEncoder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
+@Entity
+@NoArgsConstructor
+@Table(name = "users")
 public class User extends Auditable {
     // authentication
     private String username;
     private String hashedSaltedPassword;
 
+    // authorization
+    @ManyToMany
+    private Set<Role> roles = new HashSet<>();
+
     public User(String username) {
         this.username = username;
     }
-
-    // authorization
-    private Set<Role> roles;
-
 
     public void setUsername(String username) {
         // validate
@@ -52,6 +60,16 @@ public class User extends Auditable {
 
     public void addRole(Role role) {
         this.roles.add(role);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", hashedSaltedPassword='" + hashedSaltedPassword + '\'' +
+                ", roles=" + roles +
+                super.toString() +
+                '}';
     }
 }
 

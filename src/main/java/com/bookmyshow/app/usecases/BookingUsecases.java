@@ -10,9 +10,11 @@ import com.bookmyshow.app.models.ShowSeat;
 import com.bookmyshow.app.repositories.interfaces.BookingRepository;
 import com.bookmyshow.app.repositories.interfaces.ShowSeatRepository;
 import com.bookmyshow.app.services.RefundService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BookingUsecases {
     private final ShowSeatRepository showSeatRepository;
     private final RefundService refundService;

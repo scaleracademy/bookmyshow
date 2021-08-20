@@ -2,17 +2,31 @@ package com.bookmyshow.app.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
 @Getter
 @Setter
-public abstract class Auditable implements Cloneable {
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+public abstract class Auditable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // database id
+
+    @Column(updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
     private Date created;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
     private Date updated;
-    private boolean deleted;
 
     @Override
     public boolean equals(Object o) {
@@ -25,5 +39,10 @@ public abstract class Auditable implements Cloneable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return ", id=" + id;
     }
 }

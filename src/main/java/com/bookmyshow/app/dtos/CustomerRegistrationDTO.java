@@ -1,8 +1,9 @@
 package com.bookmyshow.app.dtos;
 
+import lombok.Builder;
 import lombok.Data;
 
-@Data
+@Data @Builder
 public class CustomerRegistrationDTO {
     private String username;
     private String password;

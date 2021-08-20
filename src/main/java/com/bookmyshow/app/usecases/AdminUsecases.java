@@ -2,9 +2,11 @@ package com.bookmyshow.app.usecases;
 
 import com.bookmyshow.app.dtos.*;
 import com.bookmyshow.app.models.*;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class AdminUsecases {
     public Admin registerAdmin(AdminRegistrationDTO details) {
         return null;

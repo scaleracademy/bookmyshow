@@ -2,7 +2,9 @@ package com.bookmyshow.app.services;
 
 import com.bookmyshow.app.models.Booking;
 import com.bookmyshow.app.services.notifications.NotificationService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RefundService {
     private final NotificationService notificationService;
 

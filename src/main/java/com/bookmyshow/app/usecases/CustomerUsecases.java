@@ -4,7 +4,6 @@ import com.bookmyshow.app.dtos.CreateUserDTO;
 import com.bookmyshow.app.dtos.CustomerRegistrationDTO;
 import com.bookmyshow.app.dtos.UpdateCustomerDTO;
 import com.bookmyshow.app.exceptions.accounts.AccountAlreadyExistsException;
-import com.bookmyshow.app.exceptions.accounts.InvalidCustomerException;
 import com.bookmyshow.app.exceptions.validation.UsernameTakenException;
 import com.bookmyshow.app.models.Customer;
 import com.bookmyshow.app.models.Role;
@@ -12,9 +11,11 @@ import com.bookmyshow.app.models.User;
 import com.bookmyshow.app.repositories.interfaces.CustomerRepository;
 import com.bookmyshow.app.repositories.interfaces.RoleRepository;
 import com.bookmyshow.app.repositories.interfaces.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class CustomerUsecases {
     private final UserRepository userRepository;
     private final UserUsecases userUsecases;
@@ -61,18 +62,9 @@ public class CustomerUsecases {
     }
 
     public void deleteCustomer(Customer customer) {
-        customer.setDeleted(true);
-        customerRepository.save(customer);
-    }
-
-    public void assertCustomerNotDeleted(Customer customer) {
-        if (customer.isDeleted()) {
-            throw new InvalidCustomerException("This account was deactivated");
-        }
     }
 
     public Customer updateCustomer(Customer customer, UpdateCustomerDTO details) {
-        assertCustomerNotDeleted(customer);
         if (details.getPhone() != null) {
             Optional<Customer> existing = customerRepository.findCustomerByPhone(details.getPhone());
             if (existing.isEmpty() || !existing.get().equals(customer)) {

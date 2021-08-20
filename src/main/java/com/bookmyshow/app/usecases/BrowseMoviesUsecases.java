@@ -8,9 +8,11 @@ import com.bookmyshow.app.repositories.interfaces.CinemaRepository;
 import com.bookmyshow.app.repositories.interfaces.MovieRepository;
 import com.bookmyshow.app.repositories.interfaces.ShowRepository;
 import com.bookmyshow.app.repositories.interfaces.ShowSeatRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BrowseMoviesUsecases {
     private final CinemaRepository cinemaRepository;
     private final ShowSeatRepository showSeatRepository;
